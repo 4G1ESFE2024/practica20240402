@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Practica20240402.EntidadesDeNegocio.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<form asp-action="Index">
+    <div class="row">
+        <div class="form-group col-3">
+            <label  class="control-label">Nombre</label>
+            <input type="text" name="nombre" class="form-control" />           
+        </div>
+        <div class="form-group col-3">
+            <label class="control-label">Apellido</label>
+            <input type="text" name="apellido" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-12">
+            <input type="submit" value="Buscar" class="btn btn-primary" />
+            <a asp-action="Create" class="btn btn-primary">Crear</a>
+        </div>
+    </div>
+</form>
+<p>
+  
+</p>
+<table class="table">
+    <thead>
+        <tr>          
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaNacimiento)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>           
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new {  id=item.Id  }) |
+                @Html.ActionLink("Detalle", "Details", new { id=item.Id  }) |
+                @Html.ActionLink("Eliminar", "Delete", new {  id=item.Id  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
